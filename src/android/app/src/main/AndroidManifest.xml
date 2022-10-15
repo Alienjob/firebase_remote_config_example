@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="igor.pashutin.georgia.firebase_remote_config">
+    package="igor.pashutin.georgia.firebase_remote_config_example">
    <application
-        android:label="firebase_remote_config"
+        android:label="firebase_remote_config_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

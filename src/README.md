@@ -1,4 +1,4 @@
-# firebase_remote_config
+# firebase_remote_config_example
 
 App fo demonstrate work with Firebase
 

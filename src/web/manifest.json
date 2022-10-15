@@ -1,6 +1,6 @@
 {
-    "name": "firebase_remote_config",
-    "short_name": "firebase_remote_config",
+    "name": "firebase_remote_config_example",
+    "short_name": "firebase_remote_config_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

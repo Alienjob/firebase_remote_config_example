@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "igor.pashutin.georgia" "\0"
-            VALUE "FileDescription", "firebase_remote_config" "\0"
+            VALUE "FileDescription", "firebase_remote_config_example" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "firebase_remote_config" "\0"
+            VALUE "InternalName", "firebase_remote_config_example" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 igor.pashutin.georgia. All rights reserved." "\0"
-            VALUE "OriginalFilename", "firebase_remote_config.exe" "\0"
-            VALUE "ProductName", "firebase_remote_config" "\0"
+            VALUE "OriginalFilename", "firebase_remote_config_example.exe" "\0"
+            VALUE "ProductName", "firebase_remote_config_example" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

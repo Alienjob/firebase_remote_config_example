@@ -10,14 +10,15 @@ void main() async {
 }
 
 Future<void> init() async {
-  Firebase.initializeApp(
-      name: 'firebase_remote_config_example_flutter',
-      options: FirebaseOptions(
-        apiKey: apiKey,
-        appId: appId,
-        messagingSenderId: messagingSenderId,
-        projectId: projectId,
-      ));
+  // Firebase.initializeApp(
+  //     name: 'firebase_remote_config_example_flutter',
+  //     options: FirebaseOptions.fromPigeon(
+  //       apiKey: apiKey,
+  //       appId: appId,
+  //       messagingSenderId: messagingSenderId,
+  //       projectId: projectId,
+  //     ));
+
   final remoteConfig = FirebaseRemoteConfig.instance;
   await remoteConfig.setConfigSettings(RemoteConfigSettings(
     fetchTimeout: const Duration(minutes: 1),

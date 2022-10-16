@@ -2,14 +2,17 @@ import 'dart:async';
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:sim_info/sim_info.dart';
+import 'package:carrier_info/carrier_info.dart';
 
 Future<bool> checkEmulation() async {
   if (Platform.isAndroid) {
     var deviceData = await _getAndroidBuildData();
 
-    //var simData = await _getSimInfo(); нужны пермишены
-    // https://pub.dev/packages/carrier_info/example
+    try {
+      CarrierData? carrierInfo = await CarrierInfo.all;
+    } catch (e) {
+      print(e.toString());
+    }
 
     String brand = deviceData['id'] +
         deviceData['display'] +
@@ -17,7 +20,7 @@ Future<bool> checkEmulation() async {
         deviceData['brand'] +
         deviceData['device'];
 
-    bool isEmulated = brand.contains('YAL'); // &&simData !=
+    bool isEmulated = brand.toLowerCase().contains('google'); // &&simData !=
 
     return isEmulated;
   }

@@ -2,9 +2,10 @@ import 'package:firebase_remote_config_example/device_inspector_bloc.dart';
 import 'package:firebase_remote_config_example/injection_controller.dart';
 import 'package:firebase_remote_config_example/remote_config_subscribtion.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:firebase_remote_config_example/usecases.dart';
+import 'dart:io';
 
 class DeviceInspector extends StatelessWidget {
   const DeviceInspector({super.key, required this.remoteConfigSubscribtion});
@@ -22,9 +23,40 @@ class DeviceInspector extends StatelessWidget {
           }
 
           return (state is DeviceInspectorStateWebView)
-              ? WebView(initialUrl: state.path)
+              ? WebViewWrapper(path: state.path)
               : Image.asset('asset/background.png');
         },
+      ),
+    );
+  }
+}
+
+class WebViewWrapper extends StatefulWidget {
+  const WebViewWrapper({
+    Key? key,
+    required this.path,
+  }) : super(key: key);
+
+  final String path;
+
+  @override
+  State<WebViewWrapper> createState() => _WebViewWrapperState();
+}
+
+class _WebViewWrapperState extends State<WebViewWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    // Enable virtual display.
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: WebView(
+        initialUrl: widget.path,
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:firebase_remote_config_example/device_inspector_bloc.dart';
 import 'package:firebase_remote_config_example/firebase_options.dart';
 import 'package:firebase_remote_config_example/remote_config_subscribtion.dart';
 import 'package:get_it/get_it.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 final sl = GetIt.instance;
 
@@ -12,6 +13,11 @@ Future<void> init() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await [
+    Permission.locationWhenInUse,
+    Permission.phone,
+  ].request();
 
   sl.registerLazySingleton<FirebaseRemoteConfig>(
     () => FirebaseRemoteConfig.instance,

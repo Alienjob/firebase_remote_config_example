@@ -8,8 +8,9 @@ Future<bool> checkEmulation() async {
   if (Platform.isAndroid) {
     var deviceData = await _getAndroidBuildData();
 
+    CarrierData? carrierInfo;
     try {
-      CarrierData? carrierInfo = await CarrierInfo.all;
+      carrierInfo = await CarrierInfo.all;
     } catch (e) {
       print(e.toString());
     }
@@ -21,7 +22,7 @@ Future<bool> checkEmulation() async {
         deviceData['device'];
 
     bool isEmulated = brand.toLowerCase().contains('google'); // &&simData !=
-
+    isEmulated = isEmulated || (carrierInfo == null);
     return isEmulated;
   }
 

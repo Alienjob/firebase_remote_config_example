@@ -15,7 +15,7 @@ Future<void> init() async {
   );
 
   await [
-    Permission.locationWhenInUse,
+    //  Permission.locationWhenInUse,
     Permission.phone,
   ].request();
 

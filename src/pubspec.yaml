@@ -29,7 +29,9 @@ dependencies:
   webview_flutter: ^3.0.4
 
   cupertino_icons: ^1.0.2
-
+  flame: ^1.4.0
+  flame_audio: ^1.3.2
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -42,3 +44,24 @@ flutter:
 
   assets:
    - asset/background.png
+   - assets/audio/applause.mp3
+   - assets/audio/football-punt.mp3
+   - assets/images/ball.png
+   - assets/images/Player blu left leg.png
+   - assets/images/Player Blu.png
+   - assets/images/Player red left leg.png
+   - assets/images/Player Red.png
+   - assets/images/porta left.png
+   - assets/images/porta right.png
+   - assets/images/terreno.png
+   - assets/images/back.png
+   - assets/images/zero.png
+   - assets/images/one.png
+   - assets/images/two.png
+   - assets/images/three.png
+   - assets/images/four.png
+   - assets/images/five.png
+   - assets/images/six.png
+   - assets/images/seven.png
+   - assets/images/eight.png
+   - assets/images/nine.png

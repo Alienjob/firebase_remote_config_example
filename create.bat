@@ -1,1 +1,0 @@
-flutter create src --project-name firebase_remote_config --description "App fo demonstrate work with Firebase" --org igor.pashutin.georgia

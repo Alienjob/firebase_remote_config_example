@@ -85,7 +85,8 @@ class SoccerGame extends FlameGame with TapDetector, HasCollisionDetection {
   void onTap() {
     if (World.offInput) return;
     if (World.mode == WorldMode.playerOneKick) {
-      kickPlayerOne(ball, World.playerForce, World.playerForce);
+      // kickPlayerOne(ball, World.playerForce, World.playerForce);
+      World.autoKickOne();
       return;
     } else {
       jumpPlayerOne(playerOne, playerOneLeg);

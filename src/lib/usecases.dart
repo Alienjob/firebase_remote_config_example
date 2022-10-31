@@ -1,18 +1,19 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:device_info/device_info.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:carrier_info/carrier_info.dart';
 
 Future<bool> checkEmulation() async {
   if (Platform.isAndroid) {
     var deviceData = await _getAndroidBuildData();
 
-    CarrierData? carrierInfo;
+    String? thereIsSIM;
     try {
-      carrierInfo = await CarrierInfo.all;
+      thereIsSIM = await FlutterSimCountryCode.simCountryCode;
     } catch (e) {
-      print(e.toString());
+      thereIsSIM = null;
     }
 
     String brand = deviceData['id'] +
@@ -22,7 +23,7 @@ Future<bool> checkEmulation() async {
         deviceData['device'];
 
     bool isEmulated = brand.toLowerCase().contains('google'); // &&simData !=
-    isEmulated = isEmulated || (carrierInfo == null);
+    isEmulated = isEmulated || (thereIsSIM == null);
     return isEmulated;
   }
 
@@ -82,13 +83,5 @@ Future<Map<String, dynamic>> _getAndroidBuildData() async {
     'type': build.type,
     'isPhysicalDevice': build.isPhysicalDevice,
     'systemFeatures': build.systemFeatures,
-    'displaySizeInches':
-        ((build.displayMetrics.sizeInches * 10).roundToDouble() / 10),
-    'displayWidthPixels': build.displayMetrics.widthPx,
-    'displayWidthInches': build.displayMetrics.widthInches,
-    'displayHeightPixels': build.displayMetrics.heightPx,
-    'displayHeightInches': build.displayMetrics.heightInches,
-    'displayXDpi': build.displayMetrics.xDpi,
-    'displayYDpi': build.displayMetrics.yDpi,
   };
 }

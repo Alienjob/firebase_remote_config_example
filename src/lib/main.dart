@@ -5,6 +5,7 @@ import 'package:firebase_remote_config_example/soccer/game_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,17 +37,12 @@ class MasterPage extends StatelessWidget {
     return BlocProvider<DeviceInspectorBloc>(
       create: (context) => sl(),
       child: BlocListener<DeviceInspectorBloc, DeviceInspectorState>(
-        listener: (context, state) async {
+        listener: (context, state) {
           if (state is DeviceInspectorStateEmulated) {
-            SystemChrome.setPreferredOrientations([
-              DeviceOrientation.landscapeRight,
-              DeviceOrientation.landscapeLeft,
-            ]);
-            await Future.delayed(
-              Duration(milliseconds: 100),
-              () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const GamePage(),
-              )),
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const LandscapePage(),
+              ),
             );
           }
           if (state is DeviceInspectorStateWebView) {
@@ -60,8 +56,8 @@ class MasterPage extends StatelessWidget {
             ));
           }
         },
-        child: Scaffold(
-          body: Container(),
+        child: const Scaffold(
+          body: CircularProgressIndicator(),
         ),
       ),
     );

@@ -95,10 +95,10 @@ extension PlayerOneX on SoccerGame {
   void jumpPlayerOne(
       PlayerOneComponent playerOne, PlayerOneLegComponent playerOneLeg) {
     if (!playerOne.onGround) return;
-    playerOne.speed = -7;
     playerOne.onGround = false;
-    playerOneLeg.speed = -6.8;
     playerOneLeg.onGround = false;
+    playerOne.speed = -World.playerForce;
+    playerOneLeg.speed = -World.playerForce + 0.01;
     World.onEvent(WorldEvents.playerOneJump);
   }
 }

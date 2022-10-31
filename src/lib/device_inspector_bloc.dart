@@ -2,6 +2,16 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config_example/usecases.dart';
 //import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
+
+ones() async {
+  try {
+    await OneSignal.shared.promptUserForPushNotificationPermission();
+    await OneSignal.shared.setAppId('670d193e-b952-406e-9de6-34289b2d3f5e');
+  } catch (e) {
+    print(e);
+  }
+}
 
 class DeviceInspectorBloc
     extends Bloc<DeviceInspectorEvent, DeviceInspectorState> {
@@ -26,7 +36,7 @@ class DeviceInspectorBloc
     Emitter<DeviceInspectorState> emit,
   ) async {
     emit(const DeviceInspectorStateInitial());
-
+    await ones();
     bool emulation = await checkEmulation();
     if (emulation) {
       emit(const DeviceInspectorStateEmulated());

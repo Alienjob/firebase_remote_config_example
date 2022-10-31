@@ -24,7 +24,7 @@ class DeviceInspector extends StatelessWidget {
           }
           return (state is DeviceInspectorStateWebView)
               ? WebViewWrapper(path: state.path)
-              : const GamePage();
+              : const LandscapePage();
         },
       ),
     );

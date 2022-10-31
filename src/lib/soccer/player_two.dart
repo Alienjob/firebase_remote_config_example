@@ -92,10 +92,10 @@ extension PlayerTwoX on SoccerGame {
   }
 
   void jumpPlayerTwo(
-      PlayerTwoComponent playerOne, PlayerTwoLegComponent playerOneLeg) {
-    playerOne.speed = -7;
-    playerOne.onGround = false;
-    playerOneLeg.speed = -6.8;
-    playerOneLeg.onGround = false;
+      PlayerTwoComponent playerTwo, PlayerTwoLegComponent playerTwoLeg) {
+    playerTwo.speed = -World.playerForce;
+    playerTwoLeg.speed = -World.playerForce + 0.01;
+    playerTwo.onGround = false;
+    playerTwoLeg.onGround = false;
   }
 }

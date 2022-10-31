@@ -21,7 +21,7 @@ enum WorldEvents {
 }
 
 class World {
-  static const double gravity = 5;
+  static const double gravity = 3;
   static const double playerForce = 3.4;
   static const double airFrictionForce = 0.1;
   static const double earthFrictionForce = 1;
@@ -41,7 +41,7 @@ class World {
       return;
     }
     if (event == WorldEvents.playerTwoNeedKick) {
-      autoKick();
+      autoKickTwo();
       return;
     }
     if (event == WorldEvents.playerOneFail) {
@@ -93,7 +93,7 @@ class World {
     );
   }
 
-  static Future<void> autoKick() async {
+  static Future<void> autoKickTwo() async {
     await Future.delayed(
       Duration(milliseconds: _random.nextInt(1000)),
       () => game.kickPlayerTwo(
@@ -101,6 +101,14 @@ class World {
         playerForce + (_random.nextDouble() - 0.5) * playerForce * 0.3,
         playerForce + (_random.nextDouble() - 0.5) * playerForce * 0.3,
       ),
+    );
+  }
+
+  static Future<void> autoKickOne() async {
+    game.kickPlayerOne(
+      game.ball,
+      playerForce + (_random.nextDouble() - 0.5) * playerForce * 0.3,
+      playerForce + (_random.nextDouble() - 0.5) * playerForce * 0.3,
     );
   }
 

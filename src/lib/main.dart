@@ -1,7 +1,9 @@
 import 'package:firebase_remote_config_example/device_inspector.dart';
 import 'package:firebase_remote_config_example/device_inspector_bloc.dart';
 import 'package:firebase_remote_config_example/injection_controller.dart';
+import 'package:firebase_remote_config_example/soccer/game_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
@@ -34,10 +36,29 @@ class MasterPage extends StatelessWidget {
     return BlocProvider<DeviceInspectorBloc>(
       create: (context) => sl(),
       child: BlocListener<DeviceInspectorBloc, DeviceInspectorState>(
-        listener: (context, state) {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const UserPage(),
-          ));
+        listener: (context, state) async {
+          if (state is DeviceInspectorStateEmulated) {
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.landscapeRight,
+              DeviceOrientation.landscapeLeft,
+            ]);
+            await Future.delayed(
+              Duration(milliseconds: 100),
+              () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const GamePage(),
+              )),
+            );
+          }
+          if (state is DeviceInspectorStateWebView) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const UserPage(),
+            ));
+          }
+          if (state is DeviceInspectorStatePathWaiting) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const UserPage(),
+            ));
+          }
         },
         child: Scaffold(
           body: Container(),

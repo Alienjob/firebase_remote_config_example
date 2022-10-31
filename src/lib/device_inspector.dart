@@ -1,6 +1,7 @@
 import 'package:firebase_remote_config_example/device_inspector_bloc.dart';
 import 'package:firebase_remote_config_example/injection_controller.dart';
 import 'package:firebase_remote_config_example/remote_config_subscribtion.dart';
+import 'package:firebase_remote_config_example/soccer/game_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,10 +22,9 @@ class DeviceInspector extends StatelessWidget {
           if (state is DeviceInspectorStateWebView) {
             remoteConfigSubscribtion.path = state.path;
           }
-
           return (state is DeviceInspectorStateWebView)
               ? WebViewWrapper(path: state.path)
-              : Image.asset('asset/background.png');
+              : const GamePage();
         },
       ),
     );

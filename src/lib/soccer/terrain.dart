@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:game1/game.dart';
+import 'package:firebase_remote_config_example/soccer/game.dart';
 
 extension TerrainX on SoccerGame {
   void buildTerrain(double height) {

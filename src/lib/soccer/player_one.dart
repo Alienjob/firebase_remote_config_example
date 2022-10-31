@@ -1,7 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:game1/game.dart';
-import 'package:game1/world.dart';
+import 'package:firebase_remote_config_example/soccer/game.dart';
+import 'package:firebase_remote_config_example/soccer/world.dart';
 
 class PlayerOneComponent extends SpriteComponent with HasGameRef {
   final Vector2 onGroundPosition;

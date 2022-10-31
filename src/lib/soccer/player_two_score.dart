@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flame/components.dart';
-import 'package:game1/game.dart';
+import 'package:firebase_remote_config_example/soccer/game.dart';
 
 const List<String> _assets = [
   'zero.png',

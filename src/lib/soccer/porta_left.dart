@@ -1,6 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:game1/game.dart';
+import 'package:firebase_remote_config_example/soccer/game.dart';
 
 class PortaLeftComponent extends SpriteComponent with HasGameRef {
   @override

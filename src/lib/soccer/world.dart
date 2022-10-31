@@ -1,6 +1,6 @@
-import 'package:game1/game.dart';
-import 'package:game1/player_two.dart';
-import 'package:game1/ball.dart';
+import 'package:firebase_remote_config_example/soccer/game.dart';
+import 'package:firebase_remote_config_example/soccer/player_two.dart';
+import 'package:firebase_remote_config_example/soccer/ball.dart';
 import 'dart:math';
 
 enum WorldMode { load, playerOneKick, playerTwoKick, finish }

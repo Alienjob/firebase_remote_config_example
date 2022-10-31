@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "167613826608",
+    "project_id": "pashutin-7022b",
+    "storage_bucket": "pashutin-7022b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167613826608:android:3a41ded2bb3a7be19d4ff5",
+        "android_client_info": {
+          "package_name": "entsfonbet.bklpoliws"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167613826608-s80h235vtmvot31p9ocjdjds7jhf492g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlsRRFeugq5VKsUdBJ8pXOK17lBdRsyMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167613826608-s80h235vtmvot31p9ocjdjds7jhf492g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

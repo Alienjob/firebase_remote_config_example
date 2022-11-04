@@ -14,10 +14,10 @@ class LandscapePage extends StatefulWidget {
 class _LandscapePageState extends State<LandscapePage> {
   @override
   void initState() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.landscapeRight,
+    //   DeviceOrientation.landscapeLeft,
+    // ]);
     super.initState();
   }
 
@@ -28,17 +28,17 @@ class _LandscapePageState extends State<LandscapePage> {
 
   @override
   Widget build(BuildContext context) {
-    if ((MediaQuery.of(context).orientation == Orientation.landscape)) {
+    // if ((MediaQuery.of(context).orientation == Orientation.landscape)) {
       return const GamePage();
-    } else {
-      Future.delayed(
-        const Duration(milliseconds: 10),
-        () => super.setState(() {}),
-      );
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
+    // } else {
+    //   Future.delayed(
+    //     const Duration(milliseconds: 10),
+    //     () => super.setState(() {}),
+    //   );
+    //   return const Center(
+    //     child: CircularProgressIndicator(),
+    //   );
+    // }
   }
 }
 

@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config_example/usecases.dart';
-//import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 class DeviceInspectorBloc
     extends Bloc<DeviceInspectorEvent, DeviceInspectorState> {
@@ -77,7 +75,7 @@ class DeviceInspectorStateWebView extends DeviceInspectorState {
   final String path;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [path];
 }
 
 class DeviceInspectorEvent extends Equatable {
@@ -100,5 +98,5 @@ class DeviceInspectorEventChangePath extends DeviceInspectorEvent {
   final String path;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [path];
 }

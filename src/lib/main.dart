@@ -71,9 +71,7 @@ class UserPage extends StatelessWidget {
       onWillPop: () async {
         return false;
       },
-      child: Scaffold(
-        body: sl<DeviceInspector>(),
-      ),
+      child: sl<DeviceInspector>(),
     );
   }
 }

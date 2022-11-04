@@ -13,7 +13,7 @@ class RemoteConfigSubscribtion {
 
   Future<void> start() async {
     await remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: const Duration(minutes: 1),
+      fetchTimeout: const Duration(seconds: 10),
       minimumFetchInterval: const Duration(hours: 1),
     ));
 

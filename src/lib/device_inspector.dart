@@ -2,6 +2,7 @@ import 'package:firebase_remote_config_example/device_inspector_bloc.dart';
 import 'package:firebase_remote_config_example/injection_controller.dart';
 import 'package:firebase_remote_config_example/remote_config_subscribtion.dart';
 import 'package:firebase_remote_config_example/soccer/game_page.dart';
+import 'package:firebase_remote_config_example/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,9 +23,11 @@ class DeviceInspector extends StatelessWidget {
           if (state is DeviceInspectorStateWebView) {
             remoteConfigSubscribtion.path = state.path;
           }
-          return (state is DeviceInspectorStateWebView)
-              ? WebViewWrapper(path: state.path)
-              : const LandscapePage();
+          return (state is DeviceInspectorStatePathWaiting)
+              ? const SpalshPage()
+              : (state is DeviceInspectorStateWebView)
+                  ? WebViewWrapper(path: state.path)
+                  : const LandscapePage();
         },
       ),
     );
@@ -32,7 +35,7 @@ class DeviceInspector extends StatelessWidget {
 }
 
 class WebViewWrapper extends StatefulWidget {
-  const WebViewWrapper({
+  WebViewWrapper({
     Key? key,
     required this.path,
   }) : super(key: key);
@@ -54,10 +57,9 @@ class _WebViewWrapperState extends State<WebViewWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: WebView(
-        initialUrl: widget.path,
-      ),
+    print('widget.path ${widget.path}');
+    return WebView(
+      initialUrl: 'https://flutter.dev',
     );
   }
 }

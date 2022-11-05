@@ -32,7 +32,6 @@ dependencies:
   flutter_native_splash: ^2.2.13
   device_info: ^2.0.3
   flutter_sim_country_code: ^0.1.2
-  onesignal_flutter: ^3.4.2
   flutter_launcher_icons: ^0.10.0
   
 dev_dependencies:

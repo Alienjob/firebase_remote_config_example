@@ -83,7 +83,6 @@ extension PlayerOneX on SoccerGame {
 
   PlayerOneLegComponent buildPlayerOneLeg(double height) {
     var legH = height * 20 / 100;
-    var spaceH = height * 5 / 100;
     var headH = height * 75 / 100;
 
     var result = PlayerOneLegComponent(Vector2(height * 2, size.y - height))

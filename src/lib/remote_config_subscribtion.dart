@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_remote_config_example/device_inspector_bloc.dart';
 import 'package:firebase_remote_config_example/injection_controller.dart';
-import 'firebase_options.dart';
 
 class RemoteConfigSubscribtion {
   String? path;
@@ -29,7 +27,9 @@ class RemoteConfigSubscribtion {
     // callback function
     await remoteConfig.fetchAndActivate();
     var newUrl = remoteConfig.getString('url');
-
+    if (newUrl == '') {
+      sl<DeviceInspectorBloc>().add(const DeviceInspectorEventPathEmpty());
+    }
     if ((newUrl != path) && (newUrl != '')) {
       sl<DeviceInspectorBloc>()
           .add(DeviceInspectorEventChangePath(path: newUrl));
@@ -43,33 +43,3 @@ class RemoteConfigSubscribtion {
         },
       );
 }
-
-
-// ones() async {
-//     try {
-//       await OneSignal.shared.promptUserForPushNotificationPermission();
-//       await OneSignal.shared.setAppId(“добавляем наш ключ, который скинем в текстовом файле”);
-//     } catch (e) {
-//       print(e);
-//     }
-// }
-
-//   if( path.isEmpty){
-//   loadFire()
-// }else{
-//   return path;
-//}
-
-// loadFire(){
-//  ones(); - функция онсигнал
-//   getUrl = получаем значение из firebase_remote_config(“url”);
-//   brandDevice = функция на определение бренда телефона
-//   simDevice = функция на наличие симкарты
-//  Второе условие!!
-//    if( getUrl.isEmpty ||  brandDevice.contains(“google”) ||  !simDevice ){
-//       return  заглушка ;
-//    }else{
-//      локальное сохранение ссылки = setString(“key”, getUrl);  -  пример
-//      WebView
-//   }
-// }

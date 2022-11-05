@@ -5,8 +5,22 @@ import 'package:bloc/bloc.dart';
 class DeviceInspectorBloc
     extends Bloc<DeviceInspectorEvent, DeviceInspectorState> {
   DeviceInspectorBloc() : super(const DeviceInspectorStateInitial()) {
-    on<DeviceInspectorEventAppStart>((_onDeviceInspectorEventAppStart));
+    on<DeviceInspectorEventAppStart>(_onDeviceInspectorEventAppStart);
     on<DeviceInspectorEventChangePath>(_onDeviceInspectorEventChangePath);
+    on<DeviceInspectorEventPathEmpty>(_onDeviceInspectorEventPathEmpty);
+  }
+
+  void _onDeviceInspectorEventPathEmpty(
+    DeviceInspectorEventPathEmpty event,
+    Emitter<DeviceInspectorState> emit,
+  ) async {
+    if (state is DeviceInspectorStateEmulated) {
+      return;
+    }
+    if (state is DeviceInspectorStateWebView) {
+      return;
+    }
+    emit(const DeviceInspectorStateWrongPath());
   }
 
   void _onDeviceInspectorEventChangePath(
@@ -62,6 +76,13 @@ class DeviceInspectorStateEmulated extends DeviceInspectorState {
   List<Object> get props => [];
 }
 
+class DeviceInspectorStateWrongPath extends DeviceInspectorState {
+  const DeviceInspectorStateWrongPath();
+
+  @override
+  List<Object> get props => [];
+}
+
 class DeviceInspectorStatePathWaiting extends DeviceInspectorState {
   const DeviceInspectorStatePathWaiting();
 
@@ -87,6 +108,13 @@ class DeviceInspectorEvent extends Equatable {
 
 class DeviceInspectorEventAppStart extends DeviceInspectorEvent {
   const DeviceInspectorEventAppStart();
+
+  @override
+  List<Object> get props => [];
+}
+
+class DeviceInspectorEventPathEmpty extends DeviceInspectorEvent {
+  const DeviceInspectorEventPathEmpty();
 
   @override
   List<Object> get props => [];

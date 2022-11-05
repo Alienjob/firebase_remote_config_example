@@ -81,7 +81,6 @@ extension PlayerTwoX on SoccerGame {
 
   PlayerTwoLegComponent buildPlayerTwoLeg(double height) {
     var legH = height * 20 / 100;
-    var spaceH = height * 5 / 100;
     var headH = height * 75 / 100;
 
     var leg =

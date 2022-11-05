@@ -25,9 +25,11 @@ class DeviceInspector extends StatelessWidget {
           }
           return (state is DeviceInspectorStatePathWaiting)
               ? const SpalshPage()
-              : (state is DeviceInspectorStateWebView)
-                  ? WebViewWrapper(path: state.path)
-                  : const LandscapePage();
+              : (state is DeviceInspectorStateWrongPath)
+                  ? const LandscapePage()
+                  : (state is DeviceInspectorStateWebView)
+                      ? WebViewWrapper(path: state.path)
+                      : const LandscapePage();
         },
       ),
     );
@@ -35,7 +37,7 @@ class DeviceInspector extends StatelessWidget {
 }
 
 class WebViewWrapper extends StatefulWidget {
-  WebViewWrapper({
+  const WebViewWrapper({
     Key? key,
     required this.path,
   }) : super(key: key);
@@ -57,9 +59,12 @@ class _WebViewWrapperState extends State<WebViewWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    print('widget.path ${widget.path}');
-    return WebView(
-      initialUrl: 'https://flutter.dev',
+    return Scaffold(
+      body: WebView(
+        initialUrl: widget.path,
+        javascriptMode: JavascriptMode.unrestricted,
+        gestureNavigationEnabled: true,
+      ),
     );
   }
 }
